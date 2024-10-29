@@ -64,6 +64,10 @@
         <name-map collection-entity-type="JournalVolume" submission-name="JournalVolume"/>
         <name-map collection-entity-type="JournalIssue" submission-name="JournalIssue"/>
 
+        <!-- Start of Custom Elements in Submission Map -->
+        <name-map collection-entity-type="WebReference" submission-name="WebReference"/>
+        <!-- End of Custom Elements in Submission Map -->
+
         <!-- Example of configuration using a community handle to map an Item Submission Process.
 
             This configuration maps the submission process to the community's descendant
@@ -105,6 +109,15 @@
             <processing-class>org.dspace.app.rest.submit.step.CollectionStep</processing-class>
             <type>collection</type>
         </step-definition>
+
+        
+        <!-- === Extra non-default Entities Definitions === -->
+        <step-definition id="webReferenceStep" mandatory="true">
+	        <heading>submit.progressbar.describe.stepone</heading>
+	        <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+	        <type>submission-form</type>
+        </step-definition>
+        <!-- === End of Extra Definitions === -->
 
         <!-- The following set of DescribeStep <step-definition>s all point to forms (of the same name) which are
              defined in submission-forms.xml -->
@@ -272,6 +285,13 @@
     <!-- -->
     <submission-definitions>
 
+        <!-- === Extra Submmission Process -->
+        <submission-process name="WebReference">
+	        <step id="collection"/>
+	        <step id="webReferenceStep"/>
+        </submission-process>
+        <!-- === End of  Extra Submission Process -->
+
         <!--This "traditional" process defines the DEFAULT item submission process -->
         <submission-process name="traditional">
             <!--Uncommment to display the SAMPLE step as your first step -->
@@ -391,6 +411,8 @@
             <step id="upload"/>
             <step id="license"/>
         </submission-process>
+
+
 
         <!-- Openaire submission processes -->
         <submission-process name="openairePublicationSubmission">

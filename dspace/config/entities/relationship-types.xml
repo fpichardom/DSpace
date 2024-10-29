@@ -3,6 +3,49 @@
 
 <relationships>
 
+    <!-- Extra custom types -->
+    <type>
+        <leftType>WebReference</leftType>
+        <rightType>WebReference</rightType>
+        <leftwardType>isRelatedToWebReference</leftwardType>
+        <rightwardType>isRelatedToWebReference</rightwardType>
+        <!-- <leftwardType>isParentOfWebReference</leftwardType>
+        <rightwardType>isChildOfWebReference</rightwardType> -->
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+    <type>
+        <leftType>WebReference</leftType>
+        <rightType>Person</rightType>
+        <leftwardType>isAuthorOfWebReference</leftwardType>
+        <rightwardType>isWebReferenceOfAuthor</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+        <copyToLeft>true</copyToLeft>
+    </type>
+    <type>
+        <leftType>WebReference</leftType>
+        <rightType>OrgUnit</rightType>
+        <leftwardType>isOrgUnitOfWebReference</leftwardType>
+        <rightwardType>isWebReferenceOfOrgUnit</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+        <min>0</min>
+        </rightCardinality>
+        <copyToRight>false</copyToRight>
+    </type>
+    <!-- End of Extra Custom Types -->
+
 	<!-- Sample relationship types setup used for the entities development
 	 This file can be imported using the initialize-entities launcher -->
     <type>
@@ -130,4 +173,6 @@
         </rightCardinality>
         <copyToRight>true</copyToRight>
     </type>
+
+
 </relationships>
